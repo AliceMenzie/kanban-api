@@ -8,10 +8,43 @@ module Types
     # They will be entry points for queries on your schema.
 
     # TODO: remove me
-    field :test_field, String, null: false,
-      description: "An example field added by the generator"
-    def test_field
-      "Hello World!"
+    # field :test_field, String, null: false,
+    #   description: "An example field added by the generator"
+    # def test_field
+    #   "Hello World!"
+    # end
+
+    field :users, [Types::UserType], null: false do
+      description "Query that selects all users."
     end
+    
+    def users
+      return User.all
+    end
+
+    field :boards, [Types::BoardType], null: false do
+      description "Query that selects all boards."
+    end
+    
+    def boards
+      return Board.all
+    end
+    
+    field :statuses, [Types::StatusType], null: false do
+      description "Query that selects all statuses."
+    end
+
+    def statuses
+      return Status.all
+    end
+
+    field :tasks, [Types::TaskType], null: false do
+      description "Query that selects all tasks."
+    end
+
+    def tasks
+      return Task.all
+    end
+
   end
 end
