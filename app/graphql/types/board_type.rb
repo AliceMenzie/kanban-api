@@ -10,7 +10,7 @@ module Types
       description "This is Boards User id."
     end
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false do
-      description "This is Boarrds time/date created at."
+      description "This is Boards time/date created at."
     end
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false do
       description "This is Boards time/date updated at."
