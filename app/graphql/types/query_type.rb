@@ -17,19 +17,29 @@ module Types
     field :users, [Types::UserType], null: false do
       description "Query that selects all users."
     end
-    
+
     def users
       return User.all
+    end
+
+    # User query
+    field :user, UserType, null: true do
+      description "Find a user by id"
+      argument :id, String, required: true
+    end
+
+    def user(id:)
+      User.find_by(id: id)
     end
 
     field :boards, [Types::BoardType], null: false do
       description "Query that selects all boards."
     end
-    
+
     def boards
       return Board.all
     end
-    
+
     field :statuses, [Types::StatusType], null: false do
       description "Query that selects all statuses."
     end
@@ -45,6 +55,5 @@ module Types
     def tasks
       return Task.all
     end
-
   end
 end
